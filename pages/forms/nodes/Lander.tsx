@@ -26,7 +26,8 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     marginBottom: '10px',
     borderRadius: '5px',
     width: '100%',
-    height: '36px'    
+    height: '50px',
+    border: 0    
   },
 
   fontAwesomeSubmitButton: {

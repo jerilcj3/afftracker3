@@ -35,6 +35,10 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     margin: '10px 5px',
     borderRadius: '5px',
     width: '30%',
+    height: '50px',
+    border: 0
+    
+
   },
 
   formikButtonGroup: {
