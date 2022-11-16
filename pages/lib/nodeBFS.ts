@@ -36,7 +36,7 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
       return { ...nodeBFSInterface.tree };
     } else if (
       curNode!.name === nodeBFSInterface.name &&
-      nodeBFSInterface.attributes?.type === 'lander'
+      nodeBFSInterface.attributes?.type === 'landerParent'
     ) {
       try {
         curNode!.children!.push({

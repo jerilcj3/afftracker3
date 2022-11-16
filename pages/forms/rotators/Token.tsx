@@ -36,9 +36,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     borderRadius: '5px',
     width: '30%',
     height: '50px',
-    border: 0
-    
-
+    border: 0,
   },
 
   formikButtonGroup: {
@@ -62,8 +60,9 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 
   fontAwesomeSubmitButton: {
     width: '100%',
-    marginTop: '20px',
+    marginTop: '10px',
     textAlign: 'center',
+    height: '50px'
   },
 }));
 

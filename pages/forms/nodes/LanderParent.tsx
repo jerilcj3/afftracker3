@@ -12,7 +12,7 @@ import {
 import type { RootState } from '../../../store';
 import { useSelector, useDispatch } from 'react-redux';
 import { createStyles, Button } from '@mantine/core';
-import { toggleLanderDrawer } from '../../../slices/drawerLanderSlice';
+import { toggleLanderParentDrawer } from '../../../slices/drawerLanderParentSlice';
 import nodeBFS from '../../lib/nodeBFS';
 import { saveTree } from '../../../slices/tree';
 
@@ -32,10 +32,11 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 
   fontAwesomeSubmitButton: {
     width: '100%',
-    marginTop: '20px',
+    marginTop: '10px',
     textAlign: 'center',
     padding: '5px',
     background: '#228be6',
+    height: '50px',
   },
 }));
 
@@ -45,7 +46,7 @@ interface MyFormValues {
   landerWeight: number;
 }
 
-const Lander: React.FC<{}> = () => {
+const LanderParent: React.FC<{}> = () => {
   const dispatch = useDispatch();
   //accessing the redux store node
   const node = useSelector((state: RootState) => state.node);
@@ -84,7 +85,7 @@ const Lander: React.FC<{}> = () => {
              Save the new tree in the redux tree store
           */
           actions.setSubmitting(false);
-          dispatch(toggleLanderDrawer());
+          dispatch(toggleLanderParentDrawer());
           /* 
              *** What is nodeBFS
              nodeBFPS is a function which constructs the tree. 
@@ -98,7 +99,7 @@ const Lander: React.FC<{}> = () => {
             //this is the name of the new node entered in the form
             newNodeName: values.landerName,
             attributes: {
-              type: 'lander',
+              type: 'landerParent',
               url: values.landerURL,
               weight: values.landerWeight,
             },
@@ -144,4 +145,4 @@ const Lander: React.FC<{}> = () => {
   );
 };
 
-export default Lander;
+export default LanderParent;

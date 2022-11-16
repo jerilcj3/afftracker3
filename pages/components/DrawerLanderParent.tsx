@@ -3,29 +3,29 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../store'
 import { Drawer, Button, Group } from '@mantine/core';
 import DrawerRotatorAccordian from './DrawerRotatorAccordian';
-import { toggleLanderDrawer } from '../../slices/drawerLanderSlice';
-import DrawerLanderAccordian from './DrawerLanderAccordian';
+import { toggleLanderParentDrawer } from '../../slices/drawerLanderParentSlice';
+import DrawerLanderParentAccordian from './DrawerLanderParentAccordian';
 
 
-const DrawerLander: React.FC = () => {
+const DrawerLanderParent: React.FC = () => {
   /* 
     A state is created in landerDrawer slice called isOpen
     This state called isOpen keeps track whether the landerDrawer is open or closed
     If isOpen = true, then landerDrawer is opened else closed
   */  
-  const isOpen = useSelector((state: RootState)  => state.landerDrawer.isOpen);
+  const isOpen = useSelector((state: RootState)  => state.landerDrawerParent.isOpen);
   const dispatch = useDispatch();
   return (
     <Drawer opened={isOpen}
-    onClose={() => dispatch(toggleLanderDrawer())}
+    onClose={() => dispatch(toggleLanderParentDrawer())}
     title="Lander Details"
     padding="xl"
         size="20%"
         lockScroll={false}
     >
-     <DrawerLanderAccordian />
+     <DrawerLanderParentAccordian />
     </Drawer>
   )
 }
 
-export default DrawerLander
+export default DrawerLanderParent

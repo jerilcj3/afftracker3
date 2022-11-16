@@ -31,10 +31,11 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 
   fontAwesomeSubmitButton: {
     width: '100%',
-    marginTop: '20px',
+    marginTop: '10px',
     textAlign: 'center',
     padding: '5px',
     background: '#228be6',
+    height: '50px'
   },
 }));
 
