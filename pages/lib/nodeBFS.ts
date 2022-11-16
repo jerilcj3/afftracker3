@@ -1,7 +1,7 @@
 import { RawNodeDatum } from 'react-d3-tree/lib/types/common';
 
 interface nodeBFSInterface {
-  name: string;
+  name?: string;
   tree: RawNodeDatum | RawNodeDatum[];
   newNodeName: string;
   attributes: {
