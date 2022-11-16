@@ -113,7 +113,7 @@ const Lander: React.FC<{}> = () => {
               className={classes.formikField}
               id="landerRotatorName"
               name="landerRotatorName"
-              placeholder={node.Node.data.name}
+              placeholder={node.Node.data?.name}
             />
           </div>
           <Button
