@@ -15,7 +15,6 @@ import { createStyles, Button } from '@mantine/core';
 import { toggleLanderParentDrawer } from '../../../slices/drawerLanderParentSlice';
 import nodeBFS from '../../lib/nodeBFS';
 import { saveTree } from '../../../slices/tree';
-import { structuredClones } from '../../lib/structuredClones';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   formikFields: {
@@ -54,14 +53,14 @@ const LanderParent: React.FC<{}> = () => {
 
   //accessing the redux store tree
   /*
-     *** Why structuredClone is used
+     *** Why JSON.parse() is used
      Was not able to modify or mutate the tree hence tree is cloned
      https://stackoverflow.com/questions/74388436/array-push-typeerror-cannot-add-property-0-object-is-not-extensible/74406136#74406136
   */
 
-  const rawTree = useSelector((state: RootState) => state.tree.Tree)
-  
-  const tree = structuredClones(rawTree);
+  const tree = JSON.parse(
+    JSON.stringify(useSelector((state: RootState) => state.tree.Tree))
+  );
 
   const initialValues: MyFormValues = {
     landerName: '',

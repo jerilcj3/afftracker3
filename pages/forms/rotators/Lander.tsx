@@ -54,12 +54,13 @@ const Lander: React.FC<{}> = () => {
 
   //accessing the redux store tree
   /*
-     *** Why structuredClone is used
+     *** Why JSON.parse() is used
      Was not able to modify or mutate the tree hence tree is cloned
      https://stackoverflow.com/questions/74388436/array-push-typeerror-cannot-add-property-0-object-is-not-extensible/74406136#74406136
   */
-  const tree = structuredClone(
-    useSelector((state: RootState) => state.tree.Tree)
+  
+  const tree = JSON.parse(
+    JSON.stringify(useSelector((state: RootState) => state.tree.Tree))
   );
 
   const initialValues: MyFormValues = { landerRotatorName: '' };

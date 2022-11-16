@@ -26,7 +26,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     borderRadius: '5px',
     width: '100%',
     height: '50px',
-    border: 0
+    border: 0,
   },
 
   fontAwesomeSubmitButton: {
@@ -35,7 +35,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     textAlign: 'center',
     padding: '5px',
     background: '#228be6',
-    height: '50px'
+    height: '50px',
   },
 }));
 
@@ -54,12 +54,12 @@ const Email: React.FC<{}> = () => {
 
   //accessing the redux store tree
   /*
-     *** Why structuredClone is used
+     *** Why JSON.parse() is used
      Was not able to modify or mutate the tree hence tree is cloned
      https://stackoverflow.com/questions/74388436/array-push-typeerror-cannot-add-property-0-object-is-not-extensible/74406136#74406136
   */
-  const tree = structuredClone(
-    useSelector((state: RootState) => state.tree.Tree)
+  const tree = JSON.parse(
+    JSON.stringify(useSelector((state: RootState) => state.tree.Tree))
   );
 
   const initialValues: MyFormValues = { emailRotatorName: '' };
@@ -73,8 +73,6 @@ const Email: React.FC<{}> = () => {
         onSubmit={(values, actions) => {
           actions.setSubmitting(false);
           dispatch(toggleRotatorDrawer());
-
-        
         }}
       >
         <Form>
