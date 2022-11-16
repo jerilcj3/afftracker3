@@ -97,7 +97,6 @@ const Token: React.FC<{}> = () => {
   const initialValuesGenerate = () => {
     const tokens = [];
     let token = { name: '', placeholder: '', value: '' };
-    console.log(tokenSlice.tokens.length);
     if (tokenSlice.tokens.length > 0) {
       tokenSlice.tokens.map((obj) => {
         tokens.push({

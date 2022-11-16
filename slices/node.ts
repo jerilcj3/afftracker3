@@ -17,7 +17,6 @@ export const NodeSlice = createSlice({
   reducers: {
     saveNode: (state, action: PayloadAction<node>) => {
       state.Node = action.payload.Node;
-      console.log('node is', typeof action.payload.Node);
     },
   },
 });

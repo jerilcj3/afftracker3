@@ -15,6 +15,7 @@ import { createStyles, Button } from '@mantine/core';
 import { toggleLanderParentDrawer } from '../../../slices/drawerLanderParentSlice';
 import nodeBFS from '../../lib/nodeBFS';
 import { saveTree } from '../../../slices/tree';
+import { structuredClones } from '../../lib/structuredClones';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   formikFields: {
@@ -27,7 +28,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     borderRadius: '5px',
     width: '100%',
     height: '50px',
-    border: 0    
+    border: 0,
   },
 
   fontAwesomeSubmitButton: {
@@ -57,9 +58,10 @@ const LanderParent: React.FC<{}> = () => {
      Was not able to modify or mutate the tree hence tree is cloned
      https://stackoverflow.com/questions/74388436/array-push-typeerror-cannot-add-property-0-object-is-not-extensible/74406136#74406136
   */
-  const tree = structuredClone(
-    useSelector((state: RootState) => state.tree.Tree)
-  );
+
+  const rawTree = useSelector((state: RootState) => state.tree.Tree)
+  
+  const tree = structuredClones(rawTree);
 
   const initialValues: MyFormValues = {
     landerName: '',
@@ -121,19 +123,19 @@ const LanderParent: React.FC<{}> = () => {
               className={classes.formikField}
               id="landerName"
               name="landerName"
-              placeholder='Enter Name'
+              placeholder="Enter Name"
             />
             <Field
               className={classes.formikField}
               id="landerURL"
               name="landerURL"
-              placeholder='Enter URL'
+              placeholder="Enter URL"
             />
             <Field
               className={classes.formikField}
               id="landerWeight"
               name="landerWeight"
-              placeholder='0'
+              placeholder="0"
             />
           </div>
           <Button className={classes.fontAwesomeSubmitButton} type="submit">
