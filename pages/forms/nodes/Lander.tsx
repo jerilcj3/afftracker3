@@ -1,7 +1,6 @@
-// this lander is from rotators/Lander.tsx
+//this lander is from nodes/Lander.tsx
 
-import * as React from 'react';
-import { useState } from 'react';
+import React from 'react';
 import {
   Formik,
   FormikHelpers,
@@ -10,14 +9,12 @@ import {
   Field,
   FieldProps,
 } from 'formik';
-import DrawerRotator from '../../components/DrawerRotator';
-
 import type { RootState } from '../../../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleRotatorDrawer } from '../../../slices/drawerRotatorSlice';
+import { createStyles, Button } from '@mantine/core';
+import { toggleLanderDrawer } from '../../../slices/drawerLanderSlice';
 import nodeBFS from '../../lib/nodeBFS';
 import { saveTree } from '../../../slices/tree';
-import { createStyles, Button } from '@mantine/core';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   formikFields: {
@@ -26,9 +23,10 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 
   formikField: {
     padding: '10px',
+    marginBottom: '10px',
     borderRadius: '5px',
     width: '100%',
-    height: '36px',
+    height: '36px'    
   },
 
   fontAwesomeSubmitButton: {
@@ -41,12 +39,13 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 }));
 
 interface MyFormValues {
-  landerRotatorName: string;
+  landerName: string;
+  landerURL: string;
+  landerWeight: number;
 }
 
 const Lander: React.FC<{}> = () => {
   const dispatch = useDispatch();
-
   //accessing the redux store node
   const node = useSelector((state: RootState) => state.node);
 
@@ -60,7 +59,11 @@ const Lander: React.FC<{}> = () => {
     useSelector((state: RootState) => state.tree.Tree)
   );
 
-  const initialValues: MyFormValues = { landerRotatorName: '' };
+  const initialValues: MyFormValues = {
+    landerName: '',
+    landerURL: '',
+    landerWeight: 0,
+  };
 
   const { classes } = useStyles();
 
@@ -74,24 +77,30 @@ const Lander: React.FC<{}> = () => {
              Get the name of the current node clicked from the node redux store
              Get the current state of the tree from the tree store
              Get the name from the form
+             Get the URL from the form
+             Get the weight from the form
              Pass all the above values to nodeBFS. nodeBFS attaches the form details and returns a new tree
              Save the new tree in the redux tree store
           */
           actions.setSubmitting(false);
-          dispatch(toggleRotatorDrawer());
-
+          dispatch(toggleLanderDrawer());
           /* 
              *** What is nodeBFS
              nodeBFPS is a function which constructs the tree. 
              To nodeBFS you pass name of the exisiting node, then the existing tree and the value of the child which is filled in the form
 
           */
-
           const newTree = nodeBFS({
+            //this is the name of the node that you have clicked
             name: node!.Node.data.name,
             tree: tree,
-            newNodeName: values.landerRotatorName,
-            attributes: {type: 'landerRotator'},
+            //this is the name of the new node entered in the form
+            newNodeName: values.landerName,
+            attributes: {
+              type: 'lander',
+              url: values.landerURL,
+              weight: values.landerWeight,
+            },
           });
 
           /*
@@ -108,22 +117,24 @@ const Lander: React.FC<{}> = () => {
           <div className={classes.formikFields}>
             <Field
               className={classes.formikField}
-              id="landerRotatorName"
-              name="landerRotatorName"
-              placeholder={node.Node.data.name}
+              id="landerName"
+              name="landerName"
+              placeholder='Enter Name'
+            />
+            <Field
+              className={classes.formikField}
+              id="landerURL"
+              name="landerURL"
+              placeholder='Enter URL'
+            />
+            <Field
+              className={classes.formikField}
+              id="landerWeight"
+              name="landerWeight"
+              placeholder='0'
             />
           </div>
-          <Button
-            className={classes.fontAwesomeSubmitButton}
-            disabled={
-              node.Node.children?.length !== undefined &&
-              node.Node.data.attributes?.type === 'root' &&
-              node.Node.children?.length > 0
-                ? true
-                : false
-            }
-            type="submit"
-          >
+          <Button className={classes.fontAwesomeSubmitButton} type="submit">
             Save
           </Button>
         </Form>

@@ -10,10 +10,6 @@ import Email from '../forms/rotators/Email';
 import Lander from '../forms/rotators/Lander';
 import Token from '../forms/rotators/Token';
 
-import type { RootState } from '../../store';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-
 function AccordionControl(props: AccordionControlProps) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -26,17 +22,6 @@ function AccordionControl(props: AccordionControlProps) {
 }
 
 const DrawerRotatorAccordian: React.FC = ({}) => {
-  /**
-   * Todos
-   * Access the state of the node from the redux store
-   * If the attribute of the current node clicked is 'root' then hide 'Email Rotator Accordian'
-   * If the attribute of the current node clicked is of type 'landerRotator' then show 'Email Rotator Accordian'
-   * If the attribute of the current node clicked is not 'root' then hide 'Configure Tokens Accordian'
-   */
-
-  //accessing the redux store node
-  const node = useSelector((state: RootState) => state.node);
-
   return (
     <Accordion
       variant="separated"
@@ -68,6 +53,7 @@ const DrawerRotatorAccordian: React.FC = ({}) => {
 
         <Accordion.Control>Lander Rotator</Accordion.Control>
         <Accordion.Panel>
+          {/* Lander Rotator Form */}
           <Lander />
         </Accordion.Panel>
       </Accordion.Item>
@@ -77,6 +63,7 @@ const DrawerRotatorAccordian: React.FC = ({}) => {
         {/* If the attribute of the current node clicked is 'root' then hide 'Email Rotator Accordian' */}
         <Accordion.Control>Email Rotator</Accordion.Control>
         <Accordion.Panel>
+          {/* Email Rotator Form */}
           <Email />
         </Accordion.Panel>
       </Accordion.Item>
@@ -85,6 +72,7 @@ const DrawerRotatorAccordian: React.FC = ({}) => {
       <Accordion.Item value="focus-ring">
         <Accordion.Control>Configure Tokens</Accordion.Control>
         <Accordion.Panel>
+          {/* Token Rotator Form */}
           <Token />
         </Accordion.Panel>
       </Accordion.Item>
