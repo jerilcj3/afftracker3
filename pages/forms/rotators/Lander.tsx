@@ -91,7 +91,7 @@ const Lander: React.FC<{}> = () => {
           */
 
           const newTree = nodeBFS({
-            name: node!.Node.data?.name,
+            name: node!.Node?.data?.name,
             tree: tree,
             newNodeName: values.landerRotatorName,
             attributes: {type: 'landerRotator'},
@@ -113,14 +113,14 @@ const Lander: React.FC<{}> = () => {
               className={classes.formikField}
               id="landerRotatorName"
               name="landerRotatorName"
-              placeholder={node.Node.data?.name}
+              placeholder={node.Node?.data?.name}
             />
           </div>
           <Button
             className={classes.fontAwesomeSubmitButton}
             disabled={
               node.Node.children?.length !== undefined &&
-              node.Node.data?.attributes?.type === 'root' &&
+              node.Node?.data?.attributes?.type === 'root' &&
               node.Node.children?.length > 0
                 ? true
                 : false
