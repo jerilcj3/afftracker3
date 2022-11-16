@@ -91,7 +91,7 @@ const Lander: React.FC<{}> = () => {
           */
 
           const newTree = nodeBFS({
-            name: node!.Node.data.name,
+            name: node!.Node.data?.name,
             tree: tree,
             newNodeName: values.landerRotatorName,
             attributes: {type: 'landerRotator'},
