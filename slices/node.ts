@@ -4,13 +4,11 @@ import { TreeNodeDatum } from 'react-d3-tree/lib/types/common';
 
 import { HierarchyPointNode } from 'd3-hierarchy';
 
-interface node {
+type node = {
   Node: HierarchyPointNode<TreeNodeDatum>;
-}
-
-const initialState: node = {
-  Node: {},
 };
+
+const initialState = <node>{};
 
 export const NodeSlice = createSlice({
   name: 'node',
@@ -18,6 +16,7 @@ export const NodeSlice = createSlice({
   reducers: {
     saveNode: (state, action: PayloadAction<node>) => {
       state.Node = action.payload.Node;
+      console.log('node is', typeof action.payload.Node);
     },
   },
 });

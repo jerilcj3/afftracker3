@@ -10,17 +10,17 @@ export type Token = {
 };
 
 type TokenArray = {
-tokens: Array<Token>;
+  tokens: Array<Token>;
 };
 
-const initialState: TokenArray = { tokens: [] }
+const initialState: TokenArray = { tokens: [] };
 
 export const tokenSlice = createSlice({
   name: 'tokens',
   initialState,
   reducers: {
     saveTokens: (state, action: PayloadAction<Array<Token>>) => {
-      state.tokens = action.payload
+      state.tokens = action.payload;
     },
   },
 });
