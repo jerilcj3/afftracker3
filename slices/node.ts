@@ -8,6 +8,7 @@ type node = {
   Node: HierarchyPointNode<TreeNodeDatum>;
 };
 
+/* Declaring empty object for type node */
 const initialState = <node>{};
 
 export const NodeSlice = createSlice({
