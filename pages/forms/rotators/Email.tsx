@@ -86,7 +86,7 @@ const Email: React.FC<{}> = () => {
           </div>
           <Button
             className={classes.fontAwesomeSubmitButton}
-            disabled={node.Node.data?.attributes?.type === 'root' ? true : false}
+            disabled={node.Node?.data?.attributes?.type === 'root' ? true : false}
             type="submit"
           >
             Submit
