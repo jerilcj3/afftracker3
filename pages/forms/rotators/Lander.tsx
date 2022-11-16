@@ -120,7 +120,7 @@ const Lander: React.FC<{}> = () => {
             className={classes.fontAwesomeSubmitButton}
             disabled={
               node.Node.children?.length !== undefined &&
-              node.Node.data.attributes?.type === 'root' &&
+              node.Node.data?.attributes?.type === 'root' &&
               node.Node.children?.length > 0
                 ? true
                 : false
