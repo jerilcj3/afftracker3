@@ -8,7 +8,7 @@ const Tree = dynamic(() => import('react-d3-tree'), {
 import { RawNodeDatum, TreeNodeDatum } from 'react-d3-tree/lib/types/common';
 import { HierarchyPointNode } from 'd3-hierarchy';
 import DrawerRotator from './components/DrawerRotator';
-import DrawerLanderParent from './components/DrawerLanderParent';
+import DrawerLanderNode from './components/DrawerLanderNode';
 import { Container } from '@mantine/core';
 
 import type { RootState } from '../store';
@@ -16,7 +16,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleRotatorDrawer } from '../slices/drawerRotatorSlice';
 import tree, { saveTree } from '../slices/tree';
 import node, { saveNode } from '../slices/node';
-import { toggleLanderParentDrawer } from '../slices/drawerLanderParentSlice';
+import { toggleLanderNodeDrawer } from '../slices/drawerLanderNodeSlice';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ export default function Home() {
 
       //show Lander Drawer if datum.data.attributes?.type is landerRotator
       case datum.data.attributes?.type == 'landerRotator':
-        dispatch(toggleLanderParentDrawer());
+        dispatch(toggleLanderNodeDrawer());
         break;
     }
   };
@@ -64,8 +64,8 @@ export default function Home() {
       />
       {/* This Drawer opens Rotator and Tokens */}
       <DrawerRotator />
-      {/* This Drawer opens when you click landerParent */}
-      <DrawerLanderParent />
+      {/* This Drawer opens when you click landerNode */}
+      <DrawerLanderNode />
     </Container>
   );
 }

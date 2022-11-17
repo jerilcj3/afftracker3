@@ -1,8 +1,8 @@
 import React from 'react'
 import { Accordion } from '@mantine/core'
-import LanderParent from '../forms/nodes/LanderParent'
+import LanderNode from '../forms/nodes/LanderNode'
 
-const DrawerLanderParentAccordian: React.FC = ({}) => {
+const DrawerLanderNodeAccordian: React.FC = ({}) => {
 
   return (
     <Accordion
@@ -37,11 +37,11 @@ const DrawerLanderParentAccordian: React.FC = ({}) => {
         <Accordion.Control>Lander Rotator</Accordion.Control>
         <Accordion.Panel>
             {/* Lander Node Form*/}
-            <LanderParent />
+            <LanderNode />
         </Accordion.Panel>
       </Accordion.Item>
     </Accordion>
   )
 }
 
-export default DrawerLanderParentAccordian
+export default DrawerLanderNodeAccordian
