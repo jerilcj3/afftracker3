@@ -2,17 +2,17 @@ import React from 'react';
 import { useState } from 'react';
 
 import { Drawer, Button, Group } from '@mantine/core';
-import DrawerRotatorAccordian from './DrawerRotatorAccordian';
-import type { RootState } from '../../store';
+import AccordianRoot from './AccordianRoot';
+import { RootState } from '../../../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleRotatorDrawer } from '../../slices/drawerRotatorSlice';
+import { toggleRotatorDrawer } from '../../../slices/drawerRotatorSlice';
 
 /* interface DrawerRotatorProps {
   isOpen: boolean;
   onClose: () => void;
 } */
 
-const DrawerRotator: React.FC = () => {
+const DrawerRoot: React.FC = () => {
   const isOpen = useSelector((state: RootState) => state.rotatorDrawer.isOpen);
   const dispatch = useDispatch();
 
@@ -27,10 +27,10 @@ const DrawerRotator: React.FC = () => {
         size="20%"
         lockScroll={false}
       >
-        <DrawerRotatorAccordian />
+        <AccordianRoot />
       </Drawer>
     </>
   );
 };
 
-export default DrawerRotator;
+export default DrawerRoot;

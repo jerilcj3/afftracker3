@@ -1,13 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../store'
+import { RootState } from '../../../store'
 import { Drawer, Button, Group } from '@mantine/core';
-import DrawerRotatorAccordian from './DrawerRotatorAccordian';
-import { toggleLanderNodeDrawer } from '../../slices/drawerLanderNodeSlice';
-import DrawerLanderNodeAccordian from './DrawerLanderNodeAccordian';
+import { toggleLanderNodeDrawer } from '../../../slices/drawerLanderNodeSlice';
+import AccordianLanderRotator from './AccordianLanderRotator';
 
 
-const DrawerLanderNode: React.FC = () => {
+const DrawerLanderRotator: React.FC = () => {
   /* 
     A state is created in landerDrawer slice called isOpen
     This state called isOpen keeps track whether the landerDrawer is open or closed
@@ -23,9 +22,9 @@ const DrawerLanderNode: React.FC = () => {
         size="20%"
         lockScroll={false}
     >
-     <DrawerLanderNodeAccordian />
+     <AccordianLanderRotator />
     </Drawer>
   )
 }
 
-export default DrawerLanderNode
+export default DrawerLanderRotator

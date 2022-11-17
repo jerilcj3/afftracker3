@@ -10,9 +10,8 @@ import {
 
 import type { RootState } from '../../../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleRotatorDrawer } from '../../../slices/drawerRotatorSlice';
 
-import nodeBFS from '../../lib/nodeBFS';
+import nodeBFS from '../../../library/nodeBFS';
 import { saveTree } from '../../../slices/tree';
 import { createStyles, Button } from '@mantine/core';
 
@@ -43,7 +42,7 @@ interface MyFormValues {
   emailRotatorName: string;
 }
 
-const Email: React.FC<{}> = () => {
+const FormEmailRotator: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   // accessing redux store drawerSlice
@@ -72,7 +71,6 @@ const Email: React.FC<{}> = () => {
         initialValues={initialValues}
         onSubmit={(values, actions) => {
           actions.setSubmitting(false);
-          dispatch(toggleRotatorDrawer());
         }}
       >
         <Form>
@@ -97,4 +95,4 @@ const Email: React.FC<{}> = () => {
   );
 };
 
-export default Email;
+export default FormEmailRotator;

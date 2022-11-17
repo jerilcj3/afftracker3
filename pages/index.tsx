@@ -7,8 +7,8 @@ const Tree = dynamic(() => import('react-d3-tree'), {
 });
 import { RawNodeDatum, TreeNodeDatum } from 'react-d3-tree/lib/types/common';
 import { HierarchyPointNode } from 'd3-hierarchy';
-import DrawerRotator from './components/DrawerRotator';
-import DrawerLanderNode from './components/DrawerLanderNode';
+import DrawerRoot from './components/rootNode/DrawerRoot';
+import DrawerLanderRotator from './components/landerRotator/DrawerLanderRotator';
 import { Container } from '@mantine/core';
 
 import type { RootState } from '../store';
@@ -63,9 +63,9 @@ export default function Home() {
         separation={{ nonSiblings: 3, siblings: 2.5 }}
       />
       {/* This Drawer opens Rotator and Tokens */}
-      <DrawerRotator />
-      {/* This Drawer opens when you click landerNode */}
-      <DrawerLanderNode />
+      <DrawerRoot />
+      {/* This Drawer opens when you click landerRotator */}
+      <DrawerLanderRotator />
     </Container>
   );
 }

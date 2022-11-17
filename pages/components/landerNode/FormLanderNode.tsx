@@ -13,7 +13,8 @@ import type { RootState } from '../../../store';
 import { useSelector, useDispatch } from 'react-redux';
 import { createStyles, Button } from '@mantine/core';
 import { toggleLanderNodeDrawer } from '../../../slices/drawerLanderNodeSlice';
-import nodeBFS from '../../lib/nodeBFS';
+
+import nodeBFS from '../../../library/nodeBFS';
 import { saveTree } from '../../../slices/tree';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
@@ -46,7 +47,7 @@ interface MyFormValues {
   landerWeight: number;
 }
 
-const LanderNode: React.FC<{}> = () => {
+const FormLanderNode: React.FC<{}> = () => {
   const dispatch = useDispatch();
   //accessing the redux store node
   const node = useSelector((state: RootState) => state.node);
@@ -117,6 +118,8 @@ const LanderNode: React.FC<{}> = () => {
         }}
       >
         <Form>
+                    <h1>Lander Node</h1>
+
           <div className={classes.formikFields}>
             <Field
               className={classes.formikField}
@@ -146,4 +149,4 @@ const LanderNode: React.FC<{}> = () => {
   );
 };
 
-export default LanderNode;
+export default FormLanderNode;

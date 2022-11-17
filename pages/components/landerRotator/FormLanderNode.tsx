@@ -1,7 +1,6 @@
-// this lander is from rotators/Lander.tsx
+//this lander is from nodes/Lander.tsx
 
-import * as React from 'react';
-import { useState } from 'react';
+import React from 'react';
 import {
   Formik,
   FormikHelpers,
@@ -10,14 +9,12 @@ import {
   Field,
   FieldProps,
 } from 'formik';
-import DrawerRotator from '../../components/DrawerRotator';
-
 import type { RootState } from '../../../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleRotatorDrawer } from '../../../slices/drawerRotatorSlice';
-import nodeBFS from '../../lib/nodeBFS';
-import { saveTree } from '../../../slices/tree';
 import { createStyles, Button } from '@mantine/core';
+import { toggleLanderNodeDrawer } from '../../../slices/drawerLanderNodeSlice';
+import nodeBFS from '../../../library/nodeBFS';
+import { saveTree } from '../../../slices/tree';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   formikFields: {
@@ -26,10 +23,11 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 
   formikField: {
     padding: '10px',
+    marginBottom: '10px',
     borderRadius: '5px',
     width: '100%',
     height: '50px',
-    border: 0  
+    border: 0,
   },
 
   fontAwesomeSubmitButton: {
@@ -38,17 +36,18 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     textAlign: 'center',
     padding: '5px',
     background: '#228be6',
-    height: '50px'
+    height: '50px',
   },
 }));
 
 interface MyFormValues {
-  landerRotatorName: string;
+  landerName: string;
+  landerURL: string;
+  landerWeight: number;
 }
 
-const LanderRotator: React.FC<{}> = () => {
+const FormLanderNode: React.FC<{}> = () => {
   const dispatch = useDispatch();
-
   //accessing the redux store node
   const node = useSelector((state: RootState) => state.node);
 
@@ -58,12 +57,16 @@ const LanderRotator: React.FC<{}> = () => {
      Was not able to modify or mutate the tree hence tree is cloned
      https://stackoverflow.com/questions/74388436/array-push-typeerror-cannot-add-property-0-object-is-not-extensible/74406136#74406136
   */
-  
+
   const tree = JSON.parse(
     JSON.stringify(useSelector((state: RootState) => state.tree.Tree))
   );
 
-  const initialValues: MyFormValues = { landerRotatorName: '' };
+  const initialValues: MyFormValues = {
+    landerName: '',
+    landerURL: '',
+    landerWeight: 0,
+  };
 
   const { classes } = useStyles();
 
@@ -77,24 +80,30 @@ const LanderRotator: React.FC<{}> = () => {
              Get the name of the current node clicked from the node redux store
              Get the current state of the tree from the tree store
              Get the name from the form
+             Get the URL from the form
+             Get the weight from the form
              Pass all the above values to nodeBFS. nodeBFS attaches the form details and returns a new tree
              Save the new tree in the redux tree store
           */
           actions.setSubmitting(false);
-          dispatch(toggleRotatorDrawer());
-
+          dispatch(toggleLanderNodeDrawer());
           /* 
              *** What is nodeBFS
              nodeBFPS is a function which constructs the tree. 
              To nodeBFS you pass name of the exisiting node, then the existing tree and the value of the child which is filled in the form
 
           */
-
           const newTree = nodeBFS({
-            name: node!.Node?.data?.name,
+            //this is the name of the node that you have clicked
+            name: node!.Node.data.name,
             tree: tree,
-            newNodeName: values.landerRotatorName,
-            attributes: {type: 'landerRotator'},
+            //this is the name of the new node entered in the form
+            newNodeName: values.landerName,
+            attributes: {
+              type: 'landerNode',
+              url: values.landerURL,
+              weight: values.landerWeight,
+            },
           });
 
           /*
@@ -108,25 +117,29 @@ const LanderRotator: React.FC<{}> = () => {
         }}
       >
         <Form>
+                    <h1>Lander Node</h1>
+
           <div className={classes.formikFields}>
             <Field
               className={classes.formikField}
-              id="landerRotatorName"
-              name="landerRotatorName"
-              placeholder={node.Node?.data?.name}
+              id="landerName"
+              name="landerName"
+              placeholder="Enter Name"
+            />
+            <Field
+              className={classes.formikField}
+              id="landerURL"
+              name="landerURL"
+              placeholder="Enter URL"
+            />
+            <Field
+              className={classes.formikField}
+              id="landerWeight"
+              name="landerWeight"
+              placeholder="0"
             />
           </div>
-          <Button
-            className={classes.fontAwesomeSubmitButton}
-            disabled={
-              node.Node?.children?.length !== undefined &&
-              node.Node?.data?.attributes?.type === 'root' &&
-              node.Node?.children?.length > 0
-                ? true
-                : false
-            }
-            type="submit"
-          >
+          <Button className={classes.fontAwesomeSubmitButton} type="submit">
             Save
           </Button>
         </Form>
@@ -135,4 +148,4 @@ const LanderRotator: React.FC<{}> = () => {
   );
 };
 
-export default LanderRotator;
+export default FormLanderNode;

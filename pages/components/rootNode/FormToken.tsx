@@ -16,7 +16,7 @@ import { Flex, Button, Input, ScrollArea } from '@mantine/core';
 import { createStyles } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import nodeBFS from '../../lib/nodeBFS';
+import nodeBFS from '../../../library/nodeBFS';
 import { saveTokens } from '../../../slices/tokens';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
@@ -72,7 +72,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   value: string;
 } */
 
-const Token: React.FC<{}> = () => {
+const FormToken: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   // accessing redux store
@@ -203,4 +203,4 @@ const Token: React.FC<{}> = () => {
   );
 };
 
-export default Token;
+export default FormToken;

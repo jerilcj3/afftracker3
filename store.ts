@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rotatorDrawer from './slices/drawerRotatorSlice';
-import landerDrawerNode from './slices/drawerLanderNodeSlice'
+import landerDrawerNode from './slices/drawerLanderNodeSlice';
 
 import tree from './slices/tree';
 import node from './slices/node';

@@ -5,10 +5,10 @@ import {
   Box,
 } from '@mantine/core';
 import { IconDots } from '@tabler/icons';
-import Email from '../forms/rotators/Email';
 
-import LanderRotator from '../forms/rotators/LanderRotator';
-import Token from '../forms/rotators/Token';
+import FormLanderRotator from './FormLanderRotator';
+import FormToken from './FormToken';
+
 
 function AccordionControl(props: AccordionControlProps) {
   return (
@@ -21,7 +21,7 @@ function AccordionControl(props: AccordionControlProps) {
   );
 }
 
-const DrawerRotatorAccordian: React.FC = ({}) => {
+const AccordianRoot: React.FC = ({}) => {
   return (
     <Accordion
       variant="separated"
@@ -54,30 +54,21 @@ const DrawerRotatorAccordian: React.FC = ({}) => {
         <Accordion.Control>Lander Rotator</Accordion.Control>
         <Accordion.Panel>
           {/* Lander Rotator Form */}
-          <LanderRotator />
+          <FormLanderRotator />
         </Accordion.Panel>
       </Accordion.Item>
 
-      {/* Email Accordian */}
-      <Accordion.Item value="flexibility">
-        {/* If the attribute of the current node clicked is 'root' then hide 'Email Rotator Accordian' */}
-        <Accordion.Control>Email Rotator</Accordion.Control>
-        <Accordion.Panel>
-          {/* Email Rotator Form */}
-          <Email />
-        </Accordion.Panel>
-      </Accordion.Item>
 
       {/* Token Accordian */}
       <Accordion.Item value="focus-ring">
         <Accordion.Control>Configure Tokens</Accordion.Control>
         <Accordion.Panel>
           {/* Token Rotator Form */}
-          <Token />
+          <FormToken />
         </Accordion.Panel>
       </Accordion.Item>
     </Accordion>
   );
 };
 
-export default DrawerRotatorAccordian;
+export default AccordianRoot;
