@@ -46,7 +46,7 @@ interface MyFormValues {
   landerRotatorName: string;
 }
 
-const Lander: React.FC<{}> = () => {
+const LanderRotator: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   //accessing the redux store node
@@ -135,4 +135,4 @@ const Lander: React.FC<{}> = () => {
   );
 };
 
-export default Lander;
+export default LanderRotator;

@@ -7,7 +7,7 @@ import {
 import { IconDots } from '@tabler/icons';
 import Email from '../forms/rotators/Email';
 
-import Lander from '../forms/rotators/Lander';
+import LanderRotator from '../forms/rotators/LanderRotator';
 import Token from '../forms/rotators/Token';
 
 function AccordionControl(props: AccordionControlProps) {
@@ -54,7 +54,7 @@ const DrawerRotatorAccordian: React.FC = ({}) => {
         <Accordion.Control>Lander Rotator</Accordion.Control>
         <Accordion.Panel>
           {/* Lander Rotator Form */}
-          <Lander />
+          <LanderRotator />
         </Accordion.Panel>
       </Accordion.Item>
 
