@@ -25,7 +25,7 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
     ) {
       try {
         curNode!.children!.push({
-          name: (nodeBFSInterface.newNodeName)?nodeBFSInterface.newNodeName: '',
+          name: nodeBFSInterface.newNodeName,
           attributes: { type: nodeBFSInterface.attributes.type },
           children: [],
         });
@@ -40,7 +40,7 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
     ) {
       try {
         curNode!.children!.push({
-          name: (nodeBFSInterface.newNodeName)?nodeBFSInterface.newNodeName : '',
+          name: nodeBFSInterface.newNodeName,
           attributes: {
             type: nodeBFSInterface.attributes.type,
             url: nodeBFSInterface.attributes.url
