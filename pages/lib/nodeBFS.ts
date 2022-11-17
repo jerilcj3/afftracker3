@@ -20,7 +20,7 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
     const curNode = queue.pop();
     //console.log("inside while loop", curNode);
     if (
-      curNode!.name === nodeBFSInterface.name &&
+      curNode!.name === nodeBFSInterface!.name &&
       nodeBFSInterface.attributes?.type === 'landerRotator'
     ) {
       try {
@@ -35,7 +35,7 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
 
       return { ...nodeBFSInterface.tree };
     } else if (
-      curNode!.name === nodeBFSInterface.name &&
+      curNode!.name === nodeBFSInterface!.name &&
       nodeBFSInterface.attributes?.type === 'landerParent'
     ) {
       try {
