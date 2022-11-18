@@ -8,11 +8,11 @@ import {
   FieldProps,
 } from 'formik';
 
-import type { RootState } from '../../../store';
+import type { RootState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
 
-import nodeBFS from '../../../library/nodeBFS';
-import { saveTree } from '../../../slices/tree';
+import nodeBFS from '../../library/nodeBFS';
+import { saveTree } from '../../slices/treeSlice';
 import { createStyles, Button } from '@mantine/core';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
@@ -46,7 +46,7 @@ const FormEmailRotator: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   // accessing redux store drawerSlice
-  const isOpen = useSelector((state: RootState) => state.rotatorDrawer.isOpen);
+  const isOpen = useSelector((state: RootState) => state.drawer.isOpen);
 
   //accessing the redux store node
   const node = useSelector((state: RootState) => state.node);

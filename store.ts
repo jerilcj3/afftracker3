@@ -1,16 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rotatorDrawer from './slices/drawerRotatorSlice';
-import landerDrawerNode from './slices/drawerLanderNodeSlice';
+import drawer from './slices/drawerSlice';
+import accordian from './slices/AccordianSlice'
 
-import tree from './slices/tree';
-import node from './slices/node';
-import tokens from './slices/tokens';
+import tree from './slices/treeSlice';
+import node from './slices/nodeSlice';
+import tokens from './slices/tokenSlice';
 
 
 export const store = configureStore({
   reducer: {
-    rotatorDrawer: rotatorDrawer,
-    landerDrawerNode: landerDrawerNode,
+    drawer: drawer,
+    accordian: accordian,
     tree: tree,
     node: node,
     tokens: tokens,

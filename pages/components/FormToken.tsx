@@ -9,15 +9,15 @@ import {
   FieldProps,
 } from 'formik';
 
-import type { RootState } from '../../../store';
+import type { RootState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleRotatorDrawer } from '../../../slices/drawerRotatorSlice';
+import { toggleDrawer } from '../../slices/drawerSlice';
 import { Flex, Button, Input, ScrollArea } from '@mantine/core';
 import { createStyles } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import nodeBFS from '../../../library/nodeBFS';
-import { saveTokens } from '../../../slices/tokens';
+import nodeBFS from '../../library/nodeBFS';
+import { saveTokens } from '../../slices/tokenSlice';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   formikForm: {
@@ -76,7 +76,7 @@ const FormToken: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   // accessing redux store
-  const isOpen = useSelector((state: RootState) => state.rotatorDrawer.isOpen);
+  const isOpen = useSelector((state: RootState) => state.drawer.isOpen);
 
   //accessing the redux store tree
   /*
@@ -122,7 +122,7 @@ const FormToken: React.FC<{}> = () => {
         }}
         onSubmit={(values, actions) => {
           actions.setSubmitting(false);
-          dispatch(toggleRotatorDrawer());
+          dispatch(toggleDrawer());
 
           /*
            saving the tokens to the dispatcher

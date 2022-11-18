@@ -5,7 +5,7 @@ import { Drawer, Button, Group } from '@mantine/core';
 import AccordianRoot from './AccordianRoot';
 import { RootState } from '../../../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleRotatorDrawer } from '../../../slices/drawerRotatorSlice';
+import { toggleDrawer } from '../../../slices/drawerSlice';
 
 /* interface DrawerRotatorProps {
   isOpen: boolean;
@@ -13,7 +13,7 @@ import { toggleRotatorDrawer } from '../../../slices/drawerRotatorSlice';
 } */
 
 const DrawerRoot: React.FC = () => {
-  const isOpen = useSelector((state: RootState) => state.rotatorDrawer.isOpen);
+  const isOpen = useSelector((state: RootState) => state.drawer.isOpen);
   const dispatch = useDispatch();
 
   return (
@@ -21,7 +21,7 @@ const DrawerRoot: React.FC = () => {
       {' '}
       <Drawer
         opened={isOpen}
-        onClose={() => dispatch(toggleRotatorDrawer())}
+        onClose={() => dispatch(toggleDrawer())}
         title="Add Rotator"
         padding="xl"
         size="20%"

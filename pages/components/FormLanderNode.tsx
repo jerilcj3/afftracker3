@@ -9,12 +9,13 @@ import {
   Field,
   FieldProps,
 } from 'formik';
-import type { RootState } from '../../../store';
+import type { RootState } from '../../store';
 import { useSelector, useDispatch } from 'react-redux';
 import { createStyles, Button } from '@mantine/core';
-import { toggleLanderNodeDrawer } from '../../../slices/drawerLanderNodeSlice';
-import nodeBFS from '../../../library/nodeBFS';
-import { saveTree } from '../../../slices/tree';
+
+import nodeBFS from '../../library/nodeBFS';
+import { saveTree } from '../../slices/treeSlice';
+import { toggleDrawer } from '../../slices/drawerSlice';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   formikFields: {
@@ -86,7 +87,7 @@ const FormLanderNode: React.FC<{}> = () => {
              Save the new tree in the redux tree store
           */
           actions.setSubmitting(false);
-          dispatch(toggleLanderNodeDrawer());
+          dispatch(toggleDrawer());
           /* 
              *** What is nodeBFS
              nodeBFPS is a function which constructs the tree. 
