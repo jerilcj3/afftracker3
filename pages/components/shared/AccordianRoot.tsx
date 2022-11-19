@@ -27,7 +27,7 @@ function AccordionControl(props: AccordionControlProps) {
 }
 
 const AccordianRoot: React.FC = ({}) => {
-  const accordian = useSelector((state: RootState) => state.accordian)
+  const accordian = useSelector((state: RootState) => state.accordian);
 
   return (
     <Accordion
@@ -58,9 +58,7 @@ const AccordianRoot: React.FC = ({}) => {
       <Accordion.Item value="landerRotator">
         {/* If node is of type root, then only one lander rotator can be created under root. Multiple lander rotators cannot be created */}
 
-        <Accordion.Control
-          disabled={accordian.landerRotator}
-        >
+        <Accordion.Control disabled={accordian.landerRotator}>
           Lander Rotator
         </Accordion.Control>
         <Accordion.Panel>
@@ -71,9 +69,7 @@ const AccordianRoot: React.FC = ({}) => {
 
       {/* Token Form */}
       <Accordion.Item value="configureTokens">
-        <Accordion.Control
-          disabled={accordian.tokens}
-        >
+        <Accordion.Control disabled={accordian.tokens}>
           Configure Tokens
         </Accordion.Control>
         <Accordion.Panel>
@@ -84,9 +80,7 @@ const AccordianRoot: React.FC = ({}) => {
 
       {/* Lander Node Form */}
       <Accordion.Item value="landerNode">
-        <Accordion.Control
-          disabled={accordian.landerNode}
-        >
+        <Accordion.Control disabled={accordian.landerNode}>
           Lander Node
         </Accordion.Control>
         <Accordion.Panel>
@@ -97,9 +91,7 @@ const AccordianRoot: React.FC = ({}) => {
 
       {/* Email Rotator Form */}
       <Accordion.Item value="emailRotator">
-        <Accordion.Control
-          disabled={accordian.emailRotator}
-        >
+        <Accordion.Control disabled={accordian.emailRotator}>
           Email Rotator
         </Accordion.Control>
         <Accordion.Panel>
@@ -110,9 +102,7 @@ const AccordianRoot: React.FC = ({}) => {
 
       {/* Email Node Form */}
       <Accordion.Item value="emailNode">
-        <Accordion.Control
-          disabled={accordian.emailNode}
-        >
+        <Accordion.Control disabled={accordian.emailNode}>
           Email Node
         </Accordion.Control>
         <Accordion.Panel>
