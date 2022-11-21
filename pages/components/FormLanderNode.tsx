@@ -94,9 +94,10 @@ const FormLanderNode: React.FC<{}> = () => {
              To nodeBFS you pass name of the exisiting node, then the existing tree and the value of the child which is filled in the form
 
           */
+         
           const newTree = nodeBFS({
             //this is the name of the node that you have clicked
-            name: node!.Node.data.name,
+            name: node!.Node?.data?.name,
             tree: tree,
             //this is the name of the new node entered in the form
             newNodeName: values.landerName,
@@ -118,7 +119,7 @@ const FormLanderNode: React.FC<{}> = () => {
         }}
       >
         <Form>
-                    <h1>Lander Node</h1>
+          <h1>Lander Node</h1>
 
           <div className={classes.formikFields}>
             <Field

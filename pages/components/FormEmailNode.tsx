@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import nodeBFS from '../../library/nodeBFS';
 import { saveTree } from '../../slices/treeSlice';
 import { createStyles, Button } from '@mantine/core';
+import { toggleDrawer } from '../../slices/drawerSlice';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   formikFields: {
@@ -71,6 +72,30 @@ const FormEmailNode: React.FC<{}> = () => {
         initialValues={initialValues}
         onSubmit={(values, actions) => {
           actions.setSubmitting(false);
+          dispatch(toggleDrawer());
+          /* 
+             *** What is nodeBFS
+             nodeBFPS is a function which constructs the tree. 
+             To nodeBFS you pass name of the exisiting node, then the existing tree and the value of the child which is filled in the form
+
+          */
+
+          const newTree = nodeBFS({
+            name: node!.Node.data.name,
+            tree: tree,
+            newNodeName: values.emailNodeName,
+            attributes: {
+              type: 'emailNode',
+            },
+          });
+          /*
+            Once the tree is contructed, then the below function calls the redux dispatch
+            To dispatch you pass the newly contructed tree from nodeBFS and it saves in the redux store
+          */
+
+          if (newTree) {
+            dispatch(saveTree({ Tree: newTree }));
+          }
         }}
       >
         <Form>
@@ -84,7 +109,9 @@ const FormEmailNode: React.FC<{}> = () => {
           </div>
           <Button
             className={classes.fontAwesomeSubmitButton}
-            disabled={node.Node?.data?.attributes?.type === 'root' ? true : false}
+            disabled={
+              node.Node?.data?.attributes?.type === 'root' ? true : false
+            }
             type="submit"
           >
             Submit

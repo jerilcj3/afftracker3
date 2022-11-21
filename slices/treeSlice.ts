@@ -9,9 +9,10 @@ interface tree {
 const initialState: tree = {
   Tree: {
     name: 'CAMPAIGN',
-    attributes: {type: 'root'},
+    attributes: {type: 'root'},    
     children: [],
   },
+  
 };
 
 export const TreeSlice = createSlice({

@@ -22,10 +22,9 @@ const DrawerRoot: React.FC = () => {
       <Drawer
         opened={isOpen}
         onClose={() => dispatch(toggleDrawer())}
-        title="Add Rotator"
+        title="Create Campaign"
         padding="xl"
         size="20%"
-        lockScroll={false}
       >
         <AccordianRoot />
       </Drawer>
