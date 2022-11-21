@@ -81,10 +81,10 @@ const FormEmailNode: React.FC<{}> = () => {
           */
 
           const newTree = nodeBFS({
-            name: node!.Node.data.name,
             tree: tree,
+            clickedNodeName: node!.Node.data.name,            
             newNodeName: values.emailNodeName,
-            attributes: {
+            filters: {
               type: 'emailNode',
             },
           });

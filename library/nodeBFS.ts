@@ -1,10 +1,10 @@
 import { RawNodeDatum } from 'react-d3-tree/lib/types/common';
 
 interface nodeBFSInterface {
-  name: string;
   tree: RawNodeDatum | RawNodeDatum[];
+  clickedNodeName: string;  
   newNodeName: string;
-  attributes: {
+  filters: {
     type: string;
     url?: string | undefined;
     weight?: number | undefined;
@@ -22,12 +22,12 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
 
     switch (true) {
       /* case for landerRotator */
-      case curNode!.name === nodeBFSInterface.name &&
-        nodeBFSInterface.attributes?.type === 'landerRotator':
+      case curNode!.name === nodeBFSInterface.clickedNodeName &&
+        nodeBFSInterface.filters?.type === 'landerRotator':
         try {
           curNode!.children!.push({
             name: nodeBFSInterface.newNodeName,
-            attributes: { type: nodeBFSInterface.attributes.type },
+            attributes: { type: nodeBFSInterface.filters.type },
             children: [],
           });
         } catch (err) {
@@ -37,18 +37,18 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
         return { ...nodeBFSInterface.tree };
 
       /* case for lander node */
-      case curNode!.name === nodeBFSInterface.name &&
-        nodeBFSInterface.attributes?.type === 'landerNode':
+      case curNode!.name === nodeBFSInterface.clickedNodeName &&
+        nodeBFSInterface.filters?.type === 'landerNode':
         try {
           curNode!.children!.push({
             name: nodeBFSInterface.newNodeName,
             attributes: {
-              type: nodeBFSInterface.attributes.type,
-              url: nodeBFSInterface.attributes.url
-                ? nodeBFSInterface.attributes.url
+              type: nodeBFSInterface.filters.type,
+              url: nodeBFSInterface.filters.url
+                ? nodeBFSInterface.filters.url
                 : '',
-              weight: nodeBFSInterface.attributes.weight
-                ? nodeBFSInterface.attributes.weight
+              weight: nodeBFSInterface.filters.weight
+                ? nodeBFSInterface.filters.weight
                 : '',
             },
             children: [],
@@ -62,13 +62,13 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
       /* Case for Email Rotator */
 
       /* Case for Email Node */
-      case curNode!.name === nodeBFSInterface.name &&
-        nodeBFSInterface.attributes?.type === 'emailNode':
+      case curNode!.name === nodeBFSInterface.clickedNodeName &&
+        nodeBFSInterface.filters?.type === 'emailNode':
         try {
           curNode!.children!.push({
             name: nodeBFSInterface.newNodeName,
             attributes: {
-              type: nodeBFSInterface.attributes.type,
+              type: nodeBFSInterface.filters.type,
             },
             children: [],
           });
