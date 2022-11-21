@@ -96,12 +96,12 @@ const FormLanderNode: React.FC<{}> = () => {
           */
          
           const newTree = nodeBFS({
-            //this is the name of the node that you have clicked
-            name: node!.Node?.data?.name,
             tree: tree,
+            //this is the name of the node that you have clicked
+            clickedNodeName: node!.Node?.data?.name,            
             //this is the name of the new node entered in the form
             newNodeName: values.landerName,
-            attributes: {
+            filters: {
               type: 'landerNode',
               url: values.landerURL,
               weight: values.landerWeight,

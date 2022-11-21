@@ -11,8 +11,7 @@ const initialState: tree = {
     name: 'CAMPAIGN',
     attributes: {type: 'root'},    
     children: [],
-  },
-  
+  },  
 };
 
 export const TreeSlice = createSlice({

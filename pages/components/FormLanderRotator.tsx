@@ -90,10 +90,10 @@ const FormLanderRotator: React.FC<{}> = () => {
           */
 
           const newTree = nodeBFS({
-            name: node!.Node?.data?.name,
             tree: tree,
+            clickedNodeName: node!.Node?.data?.name,            
             newNodeName: values.landerRotatorName,
-            attributes: { type: 'landerRotator' },
+            filters: { type: 'landerRotator' },
           });
 
           /*
