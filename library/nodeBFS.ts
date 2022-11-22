@@ -2,7 +2,7 @@ import { RawNodeDatum } from 'react-d3-tree/lib/types/common';
 
 interface nodeBFSInterface {
   tree: RawNodeDatum | RawNodeDatum[];
-  clickedNodeName: string;  
+  clickedNodeName: string;
   newNodeName: string;
   filters: {
     type: string;
@@ -11,6 +11,17 @@ interface nodeBFSInterface {
   };
 }
 
+const initialState: nodeBFSInterface = {
+  tree: [],
+  clickedNodeName: '',
+  newNodeName: '',
+  filters: {
+    type: '',
+    url: '',
+    weight: 0,
+  },
+};
+
 function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
   const queue: RawNodeDatum[] = [];
   queue.unshift(nodeBFSInterface.tree as RawNodeDatum);
@@ -18,7 +29,6 @@ function nodeBFS(nodeBFSInterface: nodeBFSInterface) {
   //console.log("before while loop", queue);
   while (queue.length > 0) {
     const curNode = queue.pop();
-    
 
     switch (true) {
       /* case for landerRotator */
